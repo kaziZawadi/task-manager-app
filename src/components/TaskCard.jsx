@@ -18,7 +18,13 @@ function TaskCard({ task, setTasks }) {
 
   return (
     <div>
-      <p>{task.text}</p>
+      <p
+        style={{
+          textDecoration: task.completed ? "line-through" : "none",
+        }}
+      >
+        {task.text}
+      </p>
 
       <button onClick={handleToggle}>Terminer</button>
       <button onClick={handleDelete}>Supprimer</button>
