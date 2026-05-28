@@ -9,3 +9,26 @@ body {
   max-width: 800px;
   margin: 0 auto;
 }
+
+.filters {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.task-card {
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
