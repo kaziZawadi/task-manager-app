@@ -32,3 +32,20 @@ body {
   display: flex;
   gap: 8px;
 }
+
+.toggle-btn {
+  background: #2563eb;
+  color: white;
+}
+
+.delete-btn {
+  background: #dc2626;
+  color: white;
+}
+
+.task-actions button {
+  border: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}

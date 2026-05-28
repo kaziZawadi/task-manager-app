@@ -27,10 +27,12 @@ function TaskCard({ task, setTasks }) {
       </p>
 
       <div className="task-actions">
-        <button onClick={handleToggle}>
+        <button className="toggle-btn" onClick={handleToggle}>
           {task.completed ? "Annuler" : "Terminer"}
         </button>
-        <button onClick={handleDelete}>Supprimer</button>
+        <button className="delete-btn" onClick={handleDelete}>
+          Supprimer
+        </button>
       </div>
     </div>
   );
