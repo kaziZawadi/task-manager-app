@@ -49,3 +49,7 @@ body {
   border-radius: 6px;
   cursor: pointer;
 }
+
+.completed {
+  opacity: 0.6;
+}

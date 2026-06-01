@@ -17,7 +17,7 @@ function TaskCard({ task, setTasks }) {
   }
 
   return (
-    <div className="task-card">
+    <div className={task.completed ? "task-card completed" : "task-card"}>
       <p
         style={{
           textDecoration: task.completed ? "line-through" : "none",
