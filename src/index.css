@@ -53,3 +53,13 @@ body {
 .completed {
   opacity: 0.6;
 }
+
+.active-filter {
+  background-color: #2563eb;
+  color: white;
+}
+
+.status-message {
+  font-weight: bold;
+  margin-top: 1rem;
+}
