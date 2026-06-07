@@ -31,6 +31,14 @@ function App() {
     return filter === filterName ? "active-filter" : "";
   }
 
+  function clearCompletedTasks() {
+    const confirmed = confirm("Supprimer toutes les tâches terminées ?");
+
+    if (confirmed) {
+      setTasks((prevtasks) => prevtasks.filter((task) => !task.completed));
+    }
+  }
+
   return (
     <div className="app">
       <h1>Task Manager App</h1>
@@ -58,16 +66,19 @@ function App() {
         >
           Terminées
         </button>
+
+        <button onClick={clearCompletedTasks} disabled={completedTasks === 0}>
+          Supprimer les tâches terminées.
+        </button>
       </div>
 
       <p>Total : {totalTasks}</p>
       <p>Actives : {activeTasks}</p>
       <p>Terminées : {completedTasks}</p>
       <p
-        className="status-message"
-        style={{
-          color: activeTasks === 0 ? "green" : "black",
-        }}
+        className={
+          activeTasks === 0 ? "status-message success" : "status-message"
+        }
       >
         {activeTasks === 0
           ? "Bravo ! Toutes les tâches sont terminées 🎉"

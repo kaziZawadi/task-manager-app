@@ -63,3 +63,7 @@ body {
   font-weight: bold;
   margin-top: 1rem;
 }
+
+.success {
+  color: green;
+}
