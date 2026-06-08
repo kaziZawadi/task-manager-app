@@ -35,7 +35,7 @@ function App() {
     const confirmed = confirm("Supprimer toutes les tâches terminées ?");
 
     if (confirmed) {
-      setTasks((prevtasks) => prevtasks.filter((task) => !task.completed));
+      setTasks((prevTasks) => prevTasks.filter((task) => !task.completed));
     }
   }
 
@@ -43,7 +43,7 @@ function App() {
     <div className="app">
       <h1>Task Manager App</h1>
 
-      <TaskForm setTasks={setTasks} />
+      <TaskForm tasks={tasks} setTasks={setTasks} />
 
       <div className="filters">
         <button

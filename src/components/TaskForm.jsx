@@ -1,7 +1,8 @@
 import { useState } from "react";
 
-function TaskForm({ setTasks }) {
+function TaskForm({ tasks, setTasks }) {
   const [text, setText] = useState("");
+  const [error, setError] = useState("");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -14,12 +15,19 @@ function TaskForm({ setTasks }) {
       completed: false,
     };
 
-    // Récupérer les props dans la Tasklist
+    // Vérifier l'existence de la tâche dans la liste
+    const taskAlreadyExists = tasks.some((task) => task.text === text.trim());
+
+    if (taskAlreadyExists) {
+      setError(`La tâche "${text.trim()}" existe déjà.`);
+      return;
+    }
 
     // Ajouter la nouvelle tâche à la liste des tâches
     setTasks((prevTasks) => [...prevTasks, newTask]);
 
-    // Réinitialiser le champ de saisie
+    // Effacer le message d'erreur et réinitialiser le champ de saisie
+    setError("");
     setText("");
   }
 
@@ -33,6 +41,8 @@ function TaskForm({ setTasks }) {
           placeholder="Saisir une tâche..."
         />
         <button type="submit">Ajouter</button>
+
+        {error && <p>{error}</p>}
       </form>
     </>
   );
