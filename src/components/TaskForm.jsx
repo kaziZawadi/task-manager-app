@@ -15,8 +15,12 @@ function TaskForm({ tasks, setTasks }) {
       completed: false,
     };
 
+    const normalizeText = text.trim().toLowerCase();
+
     // Vérifier l'existence de la tâche dans la liste
-    const taskAlreadyExists = tasks.some((task) => task.text === text.trim());
+    const taskAlreadyExists = tasks.some(
+      (task) => task.text.trim().toLowerCase() === normalizeText,
+    );
 
     if (taskAlreadyExists) {
       setError(`La tâche "${text.trim()}" existe déjà.`);
