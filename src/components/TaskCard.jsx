@@ -1,4 +1,8 @@
-function TaskCard({ task, setTasks }) {
+import { useState } from "react";
+
+function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
+  const [editedText, setEditedText] = useState("");
+
   function handleDelete() {
     setTasks((prevTasks) =>
       prevTasks.filter((taskItem) => taskItem.id !== task.id),
@@ -14,6 +18,16 @@ function TaskCard({ task, setTasks }) {
         return taskItem;
       }),
     );
+  }
+
+  function handleEdit() {
+    setEditingTaskId(task.id);
+    setEditedText(task.text);
+  }
+
+  function handleCancel() {
+    setEditingTaskId(null);
+    setEditedText("");
   }
 
   return (

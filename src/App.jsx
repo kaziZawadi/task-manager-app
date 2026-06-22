@@ -11,6 +11,8 @@ function App() {
 
   const [filter, setFilter] = useState("all");
 
+  const [editingTaskId, setEditingTaskId] = useState(null);
+
   useEffect(() => {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }, [tasks]);
@@ -85,7 +87,12 @@ function App() {
           : `${activeTasks} tâche(s) restante(s)`}
       </p>
 
-      <TaskList tasks={filteredTasks} setTasks={setTasks} />
+      <TaskList
+        tasks={filteredTasks}
+        setTasks={setTasks}
+        editingTaskId={editingTaskId}
+        setEditingTaskId={setEditingTaskId}
+      />
     </div>
   );
 }
