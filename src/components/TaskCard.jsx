@@ -30,23 +30,63 @@ function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
     setEditedText("");
   }
 
+  function handleSave() {
+    setTasks((prevTasks) =>
+      prevTasks.map((taskItem) => {
+        if (taskItem.id === task.id) {
+          return { ...taskItem, text: editedText.trim() };
+        }
+
+        return taskItem;
+      }),
+    );
+
+    setEditingTaskId(null);
+    setEditedText("");
+  }
+
   return (
     <div className={task.completed ? "task-card completed" : "task-card"}>
-      <p
-        style={{
-          textDecoration: task.completed ? "line-through" : "none",
-        }}
-      >
-        {task.text}
+      <p>
+        {editingTaskId === task.id ? (
+          <input
+            value={editedText}
+            onChange={(e) => setEditedText(e.target.value)}
+          />
+        ) : (
+          <p
+            style={{
+              textDecoration: task.completed ? "line-through" : "none",
+            }}
+          >
+            {task.text}
+          </p>
+        )}
       </p>
 
       <div className="task-actions">
-        <button className="toggle-btn" onClick={handleToggle}>
-          {task.completed ? "Annuler" : "Terminer"}
-        </button>
-        <button className="delete-btn" onClick={handleDelete}>
-          Supprimer
-        </button>
+        {editingTaskId === task.id ? (
+          <>
+            <button onClick={handleSave}>Sauvegarder</button>
+            <button onClick={handleCancel}>Annuler</button>
+          </>
+        ) : (
+          <>
+            {!task.completed && (
+              <button className="modify-btn" onClick={handleEdit}>
+                Modifier
+              </button>
+            )}
+
+            <button className="toggle-btn" onClick={handleToggle}>
+              {task.completed ? "Annuler" : "Terminer"}
+            </button>
+
+            <button className="delete-btn" onClick={handleDelete}>
+              Supprimer
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
