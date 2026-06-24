@@ -2,6 +2,7 @@ import { useState } from "react";
 
 function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
   const [editedText, setEditedText] = useState("");
+  const [error, setError] = useState("");
 
   function handleDelete() {
     setTasks((prevTasks) =>
@@ -31,6 +32,10 @@ function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
   }
 
   function handleSave() {
+    if (editedText.trim() === "") {
+      setError("La tâche ne doit pas être vide.");
+      return;
+    }
     setTasks((prevTasks) =>
       prevTasks.map((taskItem) => {
         if (taskItem.id === task.id) {
@@ -40,29 +45,30 @@ function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
         return taskItem;
       }),
     );
-
+    setError("");
     setEditingTaskId(null);
     setEditedText("");
   }
 
   return (
     <div className={task.completed ? "task-card completed" : "task-card"}>
-      <p>
-        {editingTaskId === task.id ? (
+      {editingTaskId === task.id ? (
+        <>
           <input
             value={editedText}
             onChange={(e) => setEditedText(e.target.value)}
           />
-        ) : (
-          <p
-            style={{
-              textDecoration: task.completed ? "line-through" : "none",
-            }}
-          >
-            {task.text}
-          </p>
-        )}
-      </p>
+          {error && <p className="error-message">{error}</p>}
+        </>
+      ) : (
+        <p
+          style={{
+            textDecoration: task.completed ? "line-through" : "none",
+          }}
+        >
+          {task.text}
+        </p>
+      )}
 
       <div className="task-actions">
         {editingTaskId === task.id ? (
