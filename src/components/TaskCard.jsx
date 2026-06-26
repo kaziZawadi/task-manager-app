@@ -24,6 +24,7 @@ function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
   function handleEdit() {
     setEditingTaskId(task.id);
     setEditedText(task.text);
+    setError("");
   }
 
   function handleCancel() {
@@ -36,6 +37,20 @@ function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
       setError("La tâche ne doit pas être vide.");
       return;
     }
+
+    const normalizedEditedText = editedText.trim().toLowerCase();
+
+    const taskAlreadyExists = tasks.some(
+      (taskItem) =>
+        taskItem.text.trim().toLowerCase() === normalizedEditedText &&
+        taskItem.id !== editingTaskId,
+    );
+
+    if (taskAlreadyExists) {
+      setError(`La tâche "${editedText.trim()}" existe déjà.`);
+      return;
+    }
+
     setTasks((prevTasks) =>
       prevTasks.map((taskItem) => {
         if (taskItem.id === task.id) {
