@@ -1,15 +1,17 @@
 import { useState } from "react";
 
-function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
+function TaskCard({ task, tasks, setTasks, editingTaskId, setEditingTaskId }) {
   const [editedText, setEditedText] = useState("");
   const [error, setError] = useState("");
 
+  // Supprimer la tâche sélectionnée
   function handleDelete() {
     setTasks((prevTasks) =>
       prevTasks.filter((taskItem) => taskItem.id !== task.id),
     );
   }
 
+  // Basculer la tâche entre active et terminée
   function handleToggle() {
     setTasks((prevTasks) =>
       prevTasks.map((taskItem) => {
@@ -21,17 +23,21 @@ function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
     );
   }
 
+  // Passer en mode édition
   function handleEdit() {
     setEditingTaskId(task.id);
     setEditedText(task.text);
     setError("");
   }
 
+  // Annuler l'édition
   function handleCancel() {
     setEditingTaskId(null);
     setEditedText("");
+    setError("");
   }
 
+  // Sauvegarder les modifications après validation
   function handleSave() {
     if (editedText.trim() === "") {
       setError("La tâche ne doit pas être vide.");
@@ -88,8 +94,12 @@ function TaskCard({ task, setTasks, editingTaskId, setEditingTaskId }) {
       <div className="task-actions">
         {editingTaskId === task.id ? (
           <>
-            <button onClick={handleSave}>Sauvegarder</button>
-            <button onClick={handleCancel}>Annuler</button>
+            <button className="save-btn" onClick={handleSave}>
+              Sauvegarder
+            </button>
+            <button className="cancel-btn" onClick={handleCancel}>
+              Annuler
+            </button>
           </>
         ) : (
           <>

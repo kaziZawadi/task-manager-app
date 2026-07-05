@@ -7,7 +7,10 @@ function TaskForm({ tasks, setTasks }) {
   function handleSubmit(e) {
     e.preventDefault();
 
-    if (text.trim() === "") return;
+    if (text.trim() === "") {
+      setError("La tâche ne peut pas être vide.");
+      return;
+    }
 
     const newTask = {
       id: Date.now(),
@@ -15,11 +18,11 @@ function TaskForm({ tasks, setTasks }) {
       completed: false,
     };
 
-    const normalizeText = text.trim().toLowerCase();
+    const normalizedText = text.trim().toLowerCase();
 
     // Vérifier l'existence de la tâche dans la liste
     const taskAlreadyExists = tasks.some(
-      (task) => task.text.trim().toLowerCase() === normalizeText,
+      (task) => task.text.trim().toLowerCase() === normalizedText,
     );
 
     if (taskAlreadyExists) {
@@ -46,7 +49,7 @@ function TaskForm({ tasks, setTasks }) {
         />
         <button type="submit">Ajouter</button>
 
-        {error && <p>{error}</p>}
+        {error && <p className="error-message">{error}</p>}
       </form>
     </>
   );

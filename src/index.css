@@ -2,7 +2,7 @@ body {
   font-family: system-ui, Arial, sans-serif;
   margin: 0;
   padding: 20px;
-  background: #f3f4f6;
+  background-color: #f3f4f6;
 }
 
 .app {
@@ -33,21 +33,51 @@ body {
   gap: 8px;
 }
 
-.toggle-btn {
-  background: #2563eb;
-  color: white;
-}
-
-.delete-btn {
-  background: #dc2626;
-  color: white;
-}
-
 .task-actions button {
   border: none;
   padding: 8px 10px;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.task-actions button {
+  transition: background-color 0.2s ease;
+}
+
+.save-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+}
+
+.cancel-btn {
+  background-color: #f0ad4e;
+  color: white;
+}
+
+.cancel-btn:hover {
+  background-color: #ec971f;
+}
+
+.toggle-btn {
+  background-color: #2563eb;
+  color: white;
+}
+
+.toggle-btn:hover {
+  background-color: #1e4fb8;
+}
+
+.delete-btn {
+  background-color: #dc2626;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #b91c1c;
 }
 
 .completed {

@@ -1,7 +1,12 @@
-import React from "react";
 import TaskCard from "./TaskCard.jsx";
 
-function TaskList({ tasks, setTasks, editingTaskId, setEditingTaskId }) {
+function TaskList({
+  tasks,
+  allTasks,
+  setTasks,
+  editingTaskId,
+  setEditingTaskId,
+}) {
   return (
     <div>
       <p>Task List</p>
@@ -9,6 +14,7 @@ function TaskList({ tasks, setTasks, editingTaskId, setEditingTaskId }) {
         <TaskCard
           key={task.id}
           task={task}
+          tasks={allTasks}
           setTasks={setTasks}
           editingTaskId={editingTaskId}
           setEditingTaskId={setEditingTaskId}
