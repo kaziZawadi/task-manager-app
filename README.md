@@ -1,16 +1,84 @@
-# React + Vite
+# React Task Manager App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![React Task Manager App](./screenshot.png)
 
-Currently, two official plugins are available:
+A simple React task management application.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Description
 
-## React Compiler
+A task management application built with React that allows users to create,
+edit, complete, delete and filter tasks. Tasks are automatically saved in Local Storage to preserve data between sessions.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ Features
 
-## Expanding the ESLint configuration
+- Create tasks
+- Edit tasks
+- Cancel task editing
+- Delete tasks
+- Complete tasks
+- Reopen completed tasks
+- Filter tasks (All / Active / Completed)
+- Prevent duplicate tasks
+- Validate user input
+- Display validation error messages
+- Automatically save tasks in LocalStorage
+- Persist tasks between sessions
+- Delete all completed tasks
+- Display task statistics
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Technologies
+
+- React
+- Vite
+- Javascript (ES6+)
+- CSS3
+- local Storage API
+- Git
+- GitHub
+- EsLint
+- Prettier
+
+## 📚 What I Learned
+
+During this project, I learned how to:
+
+- Design a React application with a clear and maintainable component architecture.
+- Design components by focusing on their single responsability.
+- Improve code quality through code reviews and refactoring.
+- Improve application reliability by validating user input and handling edge cases.
+
+## 🚀 Getting Started
+
+Follow these steps to run the project locally:
+
+### Clone the repository
+
+```bash
+git clone https://github.com/kaziZawadi/task-manager-app.git
+```
+
+### Install dependencies
+
+```bash
+npm install
+```
+
+### Start the development server
+
+```bash
+npm run dev
+```
+
+## 📁 Project Structure
+
+```text
+src/
+├── components/
+│   ├── TaskCard.jsx
+│   ├── TaskForm.jsx
+│   └── TaskList.jsx
+├── App.jsx
+├── App.css
+├── index.css
+└── main.jsx
+```
